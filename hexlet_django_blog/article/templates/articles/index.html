@@ -1,1 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Эксперименты с Django на Хекслете (Articles){% endblock %}
+
+{% block content %}
+{% if articles %}
+<ul>
+{% for article in articles %}
+<li>{{article}}</li>
+{% endfor %}
+</ul>
+{% endif %}
+{% endblock %}
+
 <h1>Article: {{ articles }}!</h1>
