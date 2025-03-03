@@ -1,8 +1,12 @@
 install:
 	uv sync
 
+migrate:
+	uv run python3 manage.py makemigrations
+	uv run python3 manage.py migrate
+
 dev:
-	python manage.py runserver
+	python3 manage.py runserver
 
 #PORT ?= 8000
 #start:

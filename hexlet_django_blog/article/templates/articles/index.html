@@ -5,8 +5,8 @@
 {% block content %}
 {% if articles %}
 <ul>
-{% for article in articles %}
-<li>{{article}}</li>
+{% for a in articles %}
+<li><a href="{{a.id}}/">{{a.name}}</a></li>
 {% endfor %}
 </ul>
 {% endif %}
