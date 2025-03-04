@@ -10,25 +10,32 @@ from .models import Article
 # Create your views here.
 
 
-class ArticlesViews(View):
+class IndexView(View):
 
     def get(self, request, *args, **kwargs):
-        # articles = Article.objects.all().map(lambda a: {'id': a.id, 'name': a.name, 'body': a.body})
-        articles = Article.objects.all()
-        print(articles)
-        return render(
-            request,
-            'articles/index.html',
-            context={'articles': articles}
-        )
+        articles = Article.objects.all()[:15]
+        print('Articles!!!', articles[0].id)
+        return render(request, 'articles/index.html', context={
+            'articles': articles
+            })
 
 
-def get_tags_and_id(request, article_id):
+class ArticleView(View):
+    def get(self, request, *args, **kwargs):
+        article = get_object_or_404(Article, id=kwargs['article_id'])
+        return render(request, 'articles/article.html', context={
+            'id': article.id,
+            'name': article.name,
+            'body': article.body,
+            })
+
+# def get_tags_and_id(request, article_id):
     '''try:
         article = Article.objects.get(pk=article_id)
     except Article.DoesNotExist:
         raise Http404()'''
-    article = get_object_or_404(Article, pk=article_id)
+
+    '''article = get_object_or_404(Article, pk=article_id)
     return render(
         request,
         'articles/article.html',
@@ -37,4 +44,4 @@ def get_tags_and_id(request, article_id):
             'name': article.name,
             'body': article.body,
             },
-        )
+        )'''
