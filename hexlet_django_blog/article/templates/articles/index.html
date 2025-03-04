@@ -3,6 +3,6 @@
 {% block content %}
     <h1>Список статей</h1>
     {% for article in articles %}
-        <h3><a href="{{article.id}}">{{ article.name }}</a></h3>
+        <h3><a href="{% url 'article_view' article.id %}">{{ article.name }}</a></h3>
     {% endfor %}
 {% endblock %}
