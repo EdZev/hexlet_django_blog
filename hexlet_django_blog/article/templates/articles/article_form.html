@@ -1,18 +1,18 @@
 {% extends "base.html" %}
 
+{% block title %}Эксперименты с Django на Хекслете (Articles){% endblock %}
+
 {% block content %}
 {% if user_can %}
 <div>
     <h2>Добавить статью</h2>
     <form action="{% url 'article_create' %}" method="POST">
         {% csrf_token %}
-        {{ form }}
+        <table border="1">
+            {{ form }}
+        </table>
         <input type="submit" value="Сохрнить">
     </form>
 </div>
 {% endif %}
-    <h1>Список статей</h1>
-    {% for article in articles %}
-        <h3><a href="{% url 'article_view' article.id %}">{{ article.name }}</a></h3>
-    {% endfor %}
 {% endblock %}
