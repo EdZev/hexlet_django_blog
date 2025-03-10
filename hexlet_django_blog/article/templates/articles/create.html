@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Эксперименты с Django на Хекслете (Articles){% endblock %}
+
+{% block content %}
+<div>
+    <h2>Добавить статью</h2>
+    <form action="{% url 'article_create' %}" method="POST">
+        {% csrf_token %}
+            {{ form }}
+        {% if user_can %}
+        <input type="submit" value="Сохрнить">
+        {% endif %}
+    </form>
+</div>
+{% endblock %}

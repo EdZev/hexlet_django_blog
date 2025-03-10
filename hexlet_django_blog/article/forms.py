@@ -3,7 +3,7 @@ from django.utils.translation import gettext_lazy as _
 from .models import Article
 
 
-class AddArticleForm(forms.ModelForm):
+class ArticleForm(forms.ModelForm):
     # name = forms.CharField(label='Название', max_length=200)
     # body = forms.CharField()
     class Meta:
